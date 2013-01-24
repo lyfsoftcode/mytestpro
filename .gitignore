@@ -1,4 +1,25 @@
-public static void Main(object obj,sender e)
+using System;
+using System.Collections;
+using System.Data;
+using System.Data.SqlClient;
+using system.Data.OracleClient;
+
+public class SqlExecute
 {
-  
+  private string connection
+  protected SqlParameter[] new params;
+  public SqlExecute(string _connectionstring)
+  {
+    this.connectionString=_connectionstring;
+  }
+  public string CheckConnection()
+  {
+    using(SqlConnection conn=new SqlConnection(this._connectionString))
+    {
+      if(conn.State!=ConnectionState.Open)
+        conn.Open();
+      conn.Close();
+      return "okay!";
+    }
+  }
 }
